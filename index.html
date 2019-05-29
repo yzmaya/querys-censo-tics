@@ -9,43 +9,70 @@
 <body>
 
 <div class="container">
-  <h2>Accordion Example</h2>
-  <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
+  <h2>Censo Tic</h2>
+  <p><strong>Nota:</strong> Al abrir cada colapso se indacará en que tabla se puede ejecutar el query.</p>
   <div class="panel-group" id="accordion">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Collapsible Group 1</a>
-        </h4>
-      </div>
-      <div id="collapse1" class="panel-collapse collapse in">
-        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+       <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"> 
+        <h4 class="panel-title">Computadoras según su situación (Uso, reserva, obsoletas)</h4>
+      </div></a>
+      <div id="collapse1" class="panel-collapse collapse">
+        <div class="panel-body"><strong>Tabla : tbComputo</strong> 
+          <p></p>
+        </div>
       </div>
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Collapsible Group 2</a>
-        </h4>
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+          <h4 class="panel-title">Computadoras según su uso (Alumnos, Docentes, Administrativos</h4></a>
       </div>
       <div id="collapse2" class="panel-collapse collapse">
-        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        <div class="panel-body"><strong>Tabla : tbOperacionTipo</strong> 
+          <p>SELECT <br>
+tbOperacionTipo.idOperacion,<br>
+tbestados.NombreEstado,<br>
+tbsubsistema.iniciales,<br>
+tbTipoEquipo.nombreEquipo,<br>
+tbUsoEquipo.descripcionUso,<br>
+tbOperacionTipo.cantidadEquipo<br>
+FROM tbOperacionTipo <br>
+INNER JOIN tbplanteles ON tbplanteles.idPlantel = tbOperacionTipo.idPlantel<br>
+INNER JOIN tbestados ON tbestados.idEstado = tbplanteles.idEstado<br>
+INNER JOIN tbsubsistema ON tbsubsistema.idSubsistema = tbplanteles.idSubsistema<br>
+INNER JOIN tbTipoEquipo ON tbTipoEquipo.idTipoEquipo = tbOperacionTipo.idTipoEquipo<br>
+INNER JOIN tbUsoEquipo ON tbUsoEquipo.idUsoEquipo = tbOperacionTipo.idUsoEquipo<br>
+ORDER BY tbOperacionTipo.idOperacion ASC
+
+</p>
+        </div>
       </div>
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Collapsible Group 3</a>
-        </h4>
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+          <h4 class="panel-title">Computadoras según su origen (Prestadas, rentadas, adquiridas con recursos propios, etc)</h4></a>
       </div>
       <div id="collapse3" class="panel-collapse collapse">
-        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+       <div class="panel-body"> 
+          <p><strong>Tabla: tbAdquisición</strong></p>
+          <p>SELECT <br>
+tbAdquisicion.idAdquisicion,<br>
+tbestados.NombreEstado,<br>
+tbsubsistema.iniciales,<br>
+tbTipoAdquisicion.nombreAdquisicion,<br>
+tbUsoEquipo.descripcionUso,<br>
+tbAdquisicion.cantidadAdquisicion<br>
+FROM tbAdquisicion <br>
+INNER JOIN tbplanteles ON tbplanteles.idPlantel = tbAdquisicion.idPlantel<br>
+INNER JOIN tbestados ON tbestados.idEstado = tbplanteles.idEstado<br>
+INNER JOIN tbsubsistema ON tbsubsistema.idSubsistema = tbplanteles.idSubsistema<br>
+INNER JOIN tbTipoAdquisicion ON tbAdquisicion.idTipoAdquisicion = tbTipoAdquisicion.idTipoAdquisicion<br>
+INNER JOIN tbUsoEquipo ON tbUsoEquipo.idUsoEquipo = tbAdquisicion.idUsoEquipo<br>
+ORDER BY tbAdquisicion.idAdquisicion ASC
+</p>
+        </div>
       </div>
     </div>
   </div> 
