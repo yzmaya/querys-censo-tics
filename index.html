@@ -75,6 +75,87 @@ ORDER BY tbAdquisicion.idAdquisicion ASC
         </div>
       </div>
     </div>
+      <div class="panel panel-default">
+      <div class="panel-heading">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+          <h4 class="panel-title">Planteles Sin Laboratorio y/o Taller</h4></a>
+      </div>
+      <div id="collapse4" class="panel-collapse collapse">
+       <div class="panel-body"> 
+          <p><strong>Tabla: tbLaboratorios</strong></p>
+          <p>SELECT <br>
+tbestados.NombreEstado,<br>
+tbsubsistema.iniciales,<br>
+tbLaboratorios.laboratorio,<br>
+tbLaboratorios.taller,<br>
+tbLaboratorios.laboratorioNoComputo,<br>
+tbLaboratorios.tallerNoComputo<br>
+FROM tbLaboratorios <br>
+INNER JOIN tbplanteles ON tbplanteles.idPlantel = tbLaboratorios.idPlantel<br>
+INNER JOIN tbestados ON tbestados.idEstado = tbplanteles.idEstado<br>
+INNER JOIN tbsubsistema ON tbsubsistema.idSubsistema = tbplanteles.idSubsistema<br>
+
+ORDER BY tbLaboratorios.idLaboratorio ASC
+
+</p>
+        </div>
+      </div>
+
+    </div>
+
+     <div class="panel panel-default">
+      <div class="panel-heading">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+          <h4 class="panel-title">Enlaces a Internet, tecnología, orígen de enlace</h4></a>
+      </div>
+      <div id="collapse5" class="panel-collapse collapse">
+       <div class="panel-body"> 
+          <p><strong>Tabla: tbEnlacesInternet</strong></p>
+  <p>     SELECT <br>
+tbEnlacesInternet.idEnlaceInternet,<br>
+tbestados.NombreEstado,<br>
+tbsubsistema.iniciales,<br>
+tbplanteles.NombrePlantel,<br>
+tbTipoAccesoInternet_v2.descripcionAccesoInternet,<br>
+tbTipoEnlace_v2.descripcionEnlace,<br>
+tbEnlaceProcedencia.NombreProcedencia,<br>
+tbEnlacesInternet.detalleProcedencia,<br>
+tbEnlacesInternet.enlaceVelocidadTransmision,<br>
+tbEnlacesInternet.formaDistribucion,<br>
+tbEnlacesInternet.empresaContratada,<br>
+tbEnlacesInternet.areaDestinada<br>
+FROM tbEnlacesInternet <br>
+INNER JOIN tbplanteles ON tbplanteles.idPlantel = tbEnlacesInternet.idPlantel<br>
+INNER JOIN tbestados ON tbestados.idEstado = tbplanteles.idEstado<br>
+INNER JOIN tbsubsistema ON tbsubsistema.idSubsistema = tbplanteles.idSubsistema<br>
+INNER JOIN tbTipoAccesoInternet_v2 ON tbEnlacesInternet.idTipoAccesoInternet = tbTipoAccesoInternet_v2.idTipoAccesoInternet<br>
+INNER JOIN tbTipoEnlace_v2 ON tbEnlacesInternet.idTipoEnlace = tbTipoEnlace_v2.idTipoEnlace<br>
+INNER JOIN tbEnlaceProcedencia ON tbEnlacesInternet.idEnlaceProcedencia = tbEnlaceProcedencia.idEnlaceProcedencia<br>
+ORDER BY tbEnlacesInternet.idEnlaceInternet ASC
+</p>
+        </div>
+      </div>
+      
+    </div>
+
+     <div class="panel panel-default">
+      <div class="panel-heading">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+          <h4 class="panel-title">Equipos de Cómputo con acceso a internet por uso</h4></a>
+      </div>
+      <div id="collapse5" class="panel-collapse collapse">
+       <div class="panel-body"> 
+          <p><strong>Tabla: tbEnlacesInternet</strong></p>
+  <p>     SELECT <br>
+
+
+</p>
+        </div>
+      </div>
+      
+    </div>
+
+
   </div> 
 </div>
     
