@@ -138,6 +138,31 @@ ORDER BY tbEnlacesInternet.idEnlaceInternet ASC
       
     </div>
 
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+          <h4 class="panel-title">Todos los equipos por Estado</h4></a>
+      </div>
+      <div id="collapse5" class="panel-collapse collapse">
+       <div class="panel-body"> 
+          <p><strong>Tabla: tbOperacionTipo</strong></p>
+  <p>     SELECT <br>
+tbestados.NombreEstado,<br>
+SUM(tbOperacionTipo.cantidadEquipo) As 'Total de Equipos'<br>
+
+FROM tbOperacionTipo<br>
+INNER JOIN tbplanteles ON tbplanteles.idPlantel = tbOperacionTipo.idPlantel<br>
+INNER JOIN tbestados ON tbestados.idEstado = tbplanteles.idEstado<br>
+INNER JOIN tbsubsistema ON tbsubsistema.idSubsistema = tbplanteles.idSubsistema<br>
+INNER JOIN tbTipoEquipo ON tbTipoEquipo.idTipoEquipo = tbOperacionTipo.idTipoEquipo<br>
+INNER JOIN tbUsoEquipo ON tbUsoEquipo.idUsoEquipo = tbOperacionTipo.idUsoEquipo<br>
+GROUP BY  tbestados.NombreEstado
+</p>
+        </div>
+      </div>
+      
+    </div>
+
      <div class="panel panel-default">
       <div class="panel-heading">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
